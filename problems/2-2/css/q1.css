@@ -1,0 +1,34 @@
+
+.container {
+  margin-inline: auto;
+}
+
+.profile {
+  display: flex;
+  gap: 1em;
+
+  dt {
+    width: 5em;
+  }
+
+  dd {
+    /* gapの分は計算に含まない */
+    width: calc(100% - 5em);
+    margin: 0;
+  }
+}
+
+.gallery {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  li {
+    display: grid;
+    /* gridの場合はpx指定でもレスポンシブ設定される */
+    grid-template-columns: 500px 500px;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: solid 1px #ccc;
+  }
+}
