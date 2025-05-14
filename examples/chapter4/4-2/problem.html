@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pictureのテスト</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <main>
+    <h1>画像をテストしてみよう</h1>
+    <picture>
+      <source srcset="img/test.webp" type="image/webp" />
+      <img src="img/test.jpg" alt="photo" />
+    </picture>
+
+    <picture>
+      <source srcset="img/test-sp.jpg" media="(max-width: 768px)" />
+      <img src="img/test.jpg" alt="photo" />
+    </picture>
+
+    <picture>
+      <source srcset="img/test.jpg, img/test@2x.jpg 2x" />
+      <img src="img/test.jpg" alt="photo" />
+    </picture>
+
+    <!-- ここに書いてみよう -->
+    
+  </main>
+</body>
+</html>

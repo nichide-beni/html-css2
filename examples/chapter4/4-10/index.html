@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>レスポンシブなプロパティ指定 | cssの便利なプロパティを学ぼう</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    main {
+      /* 最小値10px, 最大値20pxとし、1200pxのとき20pxとなるように設定 */
+      border: solid clamp(10px, 1.666666666666667vw, 20px) red;
+      background-color: blue;
+    }
+
+    .container {
+      max-width: 800px;
+      margin-inline: auto;
+      background-color: orange;
+
+      h1 {
+        /* 最小値12px, 最大値24pxとし、画面幅1200pxのとき24pxとなるように設定、計算式を考えてみよう */
+        font-size: clamp(12px, 2vw, 24px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="container">
+      <h1>レスポンシブなプロパティ指定 | cssの便利なプロパティを学ぼう</h1>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,50 @@
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>コンテンツのセンタリング | cssの便利なプロパティを学ぼう</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    .container {
+      max-width: 500px;
+      margin-inline: auto;
+      /* 確認用の背景色 */
+      padding: 1em;
+      background-color: gray;
+
+      p {
+        margin-block: 0;
+      }
+    }
+
+    .parent {
+      width: fit-content;
+      margin-inline: auto;
+      /* 確認用の背景色 */
+      padding: 1em;
+      background-color: orange;
+      
+      p {
+        color: blue;
+      }
+    }
+
+    .center-parent {
+      height: 30dvh;
+      place-content: center;
+      /* 確認用の背景色 */
+      padding: 1em;
+      background-color: aqua;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>コンテンツのセンタリング | cssの便利なプロパティを学ぼう</h1>
+  </main>
+</body>
+</html>
