@@ -1,0 +1,53 @@
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cssでのネストについて | ドキュメントを読んでみよう</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    .parent {
+      background-color: gray;
+      padding: 2vw;
+
+      .child {
+        color: red;
+
+        /* is-disabledが有効の時に非表示(didplayをnone)にする */
+      }
+
+      .media {
+        font-size: 24px;
+
+        /* 768px以下でカラーをgreenにする */
+      }
+    }
+
+    .parent2 {
+      .child2 {
+        display: none;
+      }
+
+      /* parent2に「is-active」クラスが設定されているとき、.child2に「display: block」を設定する */
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>cssでのネストについて | ドキュメントを読んでみよう</h1>
+
+    <div class="parent">
+      <p class="child">子クラス</p>
+      <p class="child is-disabled">非表示にしたい</p>
+      <p class="media">メディアクエリを使ってみる</p>
+    </div>
+
+    <div class="parent2 is-active">
+      <p class="child2">子要素その2</p>
+    </div>
+  </main>
+</body>
+</html>

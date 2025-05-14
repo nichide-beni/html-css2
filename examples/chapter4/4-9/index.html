@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>切り抜きの指定 | cssの便利なプロパティを学ぼう</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    h1 {
+      padding: .5em 1em;
+      color: white;
+      background-color: blue;
+      /* 場合によっては固定かmax-widthを使わないと安定しない可能性あり */
+      clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 0 51%, 0% 0%);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>切り抜きの指定 | cssの便利なプロパティを学ぼう</h1>
+    <h1>切り抜きの指定<br>2行になったとき(旧来では難しかった)</h1>
+  </main>
+</body>
+</html>

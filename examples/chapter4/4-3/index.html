@@ -1,0 +1,50 @@
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>遅延読み込みのテスト</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    section {
+      margin-top: 150vh;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>遅延読み込みを試してみよう</h1>
+
+    <script src="js/sctipr.js" defer></script>
+
+    <section>
+      <h2>画像1</h2>
+      <img loading="lazy" width="960" height="640" src="img/test1.jpg" alt="photo1" />
+    </section>
+
+    <section>
+      <h2>画像2</h2>
+      <img loading="lazy" width="640" height="427" src="img/test2.jpg" alt="photo2" />
+    </section>
+
+    <section>
+      <h2>画像3</h2>
+      <img loading="lazy" width="640" height="427" src="img/test3.jpg" alt="photo3" />
+    </section>
+
+    <section>
+      <h2>画像4</h2>
+      <img loading="lazy" width="640" height="427" src="img/test4.jpg" alt="photo4" />
+    </section>
+
+    <section>
+      <h2>画像5 - 同期読み込み</h2>
+      <img loading="eager" width="725" height="1280" src="img/test5.jpg" alt="photo5" />
+    </section>
+
+  </main>
+</body>
+</html>
