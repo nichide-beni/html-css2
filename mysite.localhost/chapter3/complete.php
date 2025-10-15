@@ -24,7 +24,7 @@ if ($error_name || $error_content) {
     'error_name' => $error_name,
     'error_content' => $error_content
   ];
-  $redirect_url = 'sample2.php';
+  $redirect_url = 'edit.php';
   if ($id !== false && $id > 0) {
     $redirect_url .= '?id=' . urlencode($id);
   }
@@ -52,6 +52,6 @@ if ($id !== false && $id > 0) {
 </head>
 <body>
   <h1><?php echo $is_edit ? '投稿を更新しました' : '新規投稿を追加しました'; ?></h1>
-  <p><a href="sample1.php" class="btn">一覧に戻る</a></p>
+  <p><a href="index.php" class="btn">一覧に戻る</a></p>
 </body>
 </html>

@@ -40,7 +40,7 @@ $chats = $stmt->fetchAll(PDO::FETCH_ASSOC);
           <td><?php echo nl2br(htmlspecialchars($chat['content'])) ?></td>
           <td><?php echo htmlspecialchars($chat['created']) ?></td>
           <td class="actions">
-            <button class="btn" onclick="location.href='sample2.php?id=<?php echo $chat['id'] ?>'">編集</button>
+            <button class="btn" onclick="location.href='edit.php?id=<?php echo $chat['id'] ?>'">編集</button>
             <button class="btn" onclick="if(confirm('本当に削除しますか？')) location.href='delete.php?id=<?php echo $chat['id']; ?>'">削除</button>
           </td>
         </tr>
@@ -48,6 +48,6 @@ $chats = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </tbody>
   </table>
 
-  <p><button class="btn" onclick="location.href='sample2.php'">新規追加</button></p>
+  <p><button class="btn" onclick="location.href='edit.php'">新規追加</button></p>
 </body>
 </html>
