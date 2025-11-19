@@ -12,7 +12,7 @@
 
 ```css
 /*
-Theme Name: block-theme-sample
+Theme Name: my-block-first
 Theme URI: https://example.com
 Author: サンプルさん
 Author URI: https://example.com
@@ -91,6 +91,11 @@ function fishing_theme_setup() {
   add_editor_style('style.css');
 }
 add_action('after_setup_theme', 'fishing_theme_setup');
+
+function fishing_theme_enqueue_styles() {
+  wp_enqueue_style('fishing-theme-style', get_stylesheet_uri()); // フロント用
+}
+add_action('wp_enqueue_scripts', 'fishing_theme_enqueue_styles');
 
 ```
 
