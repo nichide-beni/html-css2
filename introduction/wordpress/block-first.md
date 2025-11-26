@@ -116,7 +116,7 @@ add_action('wp_enqueue_scripts', 'fishing_theme_enqueue_styles');
 
 ```html
 <!-- wp:group {"tagName":"footer","layout":{"type":"constrained"}} -->
-  <!-- wp:paragraph -->© 2025 釣具専門サイト All rights reserved.<!-- /wp:paragraph -->
+  <!-- wp:paragraph --><p>© 2025 釣具専門サイト All rights reserved.</p><!-- /wp:paragraph -->
 <!-- /wp:group -->
 ```
 
@@ -297,7 +297,49 @@ img {
 }
 ```
 
+## 構築済みページのソースを細かく調整する
+
+ブロックテーマやカスタムブロック(エディターのブロックのこと)は、スタイルやクラスに至るまで細部の検証を行う。  
+JSON化した状態での正確さを確認するため、独自で作る場合は順番にも配慮しながら構築する。  
+
+> parts/header.html
+
+```html
+<!-- wp:group {"tagName":"header","layout":{"type":"constrained"},"style":{"spacing":{"margin":{"top":"0","bottom":"0"}}}} -->
+<header class="wp-block-group" style="margin-top:0;margin-bottom:0;">
+  <!-- wp:site-title /-->
+  <!-- wp:navigation {"layout":{"type":"flex","justifyContent":"right"}} /-->
+</header>
+<!-- /wp:group -->
+```
+
+> parts/footer.html
+
+```html
+<!-- wp:group {"tagName":"footer","layout":{"type":"constrained"},"style":{"spacing":{"margin":{"top":"0","bottom":"0"}}}} -->
+<footer class="wp-block-group" style="margin-top:0;margin-bottom:0;">
+  <!-- wp:paragraph --><p>© 2025 釣具専門サイト All rights reserved.</p><!-- /wp:paragraph -->
+</footer>
+<!-- /wp:group -->
+```
+
+> templates/index.html
+
+```html
+<!-- wp:template-part {"slug":"header","area":"header"} /-->
+<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group">
+  <!-- wp:post-content /-->
+</div>
+<!-- /wp:group -->
+<!-- wp:template-part {"slug":"footer","area":"footer"} /-->
+```
+
 ## TOPページを作成する
+
+これまでの情報を参考に、TOPページを構成してみよう。  
+wpコードに一致するHTMLを設置しておくことで、管理画面エラーなくデフォルト設定が可能になる。  
+※not foundあたりは無視してOK。  
 
 > templates/front-page.html
 
@@ -305,20 +347,41 @@ img {
 <!-- wp:template-part {"slug":"header","area":"header"} /-->
 
 <!-- wp:cover {"url":"path/to/kv.jpg","dimRatio":30,"overlayColor":"primary-blue","minHeight":400} -->
-  <!-- wp:heading {"textAlign":"center","level":1} -->ようこそ、釣具専門サイトへ<!-- /wp:heading -->
-  <!-- wp:paragraph {"align":"center"} -->釣り人のための情報と道具がここに集結！<!-- /wp:paragraph -->
+<div class="wp-block-cover" style="min-height:400px">
+  <img class="wp-block-cover__image-background" alt="" src="path/to/kv.jpg" data-object-fit="cover"/>
+  <span aria-hidden="true" class="wp-block-cover__background has-primary-blue-background-color has-background-dim-30 has-background-dim"></span>
+  <div class="wp-block-cover__inner-container">
+    <!-- wp:heading {"level":1} -->
+    <h1 class="wp-block-heading">ようこそ、釣具専門サイトへ</h1>
+    <!-- /wp:heading -->
+
+    <!-- wp:paragraph {"align":"center"} -->
+    <p class="has-text-align-center">釣り人のための情報と道具がここに集結！</p>
+    <!-- /wp:paragraph -->
+  </div>
+</div>
 <!-- /wp:cover -->
 
 <!-- wp:group {"layout":{"type":"constrained"}} -->
-  <!-- wp:heading {"level":2} -->🎣 サービス紹介<!-- /wp:heading -->
-  <!-- wp:paragraph -->当店で取り扱っている釣具の詳細は以下のページでご覧いただけます。<!-- /wp:paragraph -->
+<div class="wp-block-group">
+  <!-- wp:heading --><h2 class="wp-block-heading">サービス紹介</h2><!-- /wp:heading -->
+  <!-- wp:paragraph --><p>当店で取り扱っている釣具の詳細は以下のページでご覧いただけます。</p><!-- /wp:paragraph -->
   <!-- wp:buttons -->
-    <!-- wp:button {"text":"釣具一覧を見る"} /-->
+    <div class="wp-block-buttons">
+      <!-- wp:button -->
+      <div class="wp-block-button">
+        <a class="wp-block-button__link wp-element-button">釣具一覧を見る</a>
+      </div>
+      <!-- /wp:button -->
+    </div>
   <!-- /wp:buttons -->
+</div>
 <!-- /wp:group -->
 
 <!-- wp:group {"layout":{"type":"constrained"}} -->
-  <!-- wp:heading {"level":2} -->📰 最新のお知らせ<!-- /wp:heading -->
+<div class="wp-block-group">
+  <!-- wp:heading --><h2 class="wp-block-heading">最新のお知らせ</h2><!-- /wp:heading -->
+
   <!-- wp:query {"query":{"perPage":3,"postType":"post"}} -->
     <!-- wp:post-template -->
       <!-- wp:post-featured-image {"isLink":true} /-->
@@ -327,11 +390,17 @@ img {
       <!-- wp:post-excerpt /-->
     <!-- /wp:post-template -->
   <!-- /wp:query -->
-  <!-- wp:button {"text":"お知らせ一覧へ"} /-->
+  <!-- wp:button {"text":"お知らせ一覧へ"} -->
+  <div class="wp-block-button">
+    <a class="wp-block-button__link wp-element-button">お知らせ一覧へ</a>
+  </div>
+  <!-- /wp:button -->
+</div>
 <!-- /wp:group -->
 
 <!-- wp:group {"layout":{"type":"constrained"}} -->
-  <!-- wp:heading {"level":2} -->🐟 魚拓ギャラリー<!-- /wp:heading -->
+<div class="wp-block-group">
+  <!-- wp:heading {"level":2} --><h2>魚拓ギャラリー</h2><!-- /wp:heading -->
   <!-- wp:query {"query":{"perPage":3,"postType":"gyotaku"}} -->
     <!-- wp:post-template -->
       <!-- wp:post-featured-image {"isLink":true} /-->
@@ -339,9 +408,38 @@ img {
       <!-- wp:acf/field {"name":"fish_type"} /-->
     <!-- /wp:post-template -->
   <!-- /wp:query -->
-  <!-- wp:button {"text":"魚拓一覧へ"} /-->
+  <!-- wp:button {"text":"魚拓一覧へ"} -->
+  <div class="wp-block-button">
+    <a class="wp-block-button__link wp-element-button">魚拓一覧へ</a>
+  </div>
+  <!-- /wp:button -->
+</div>
 <!-- /wp:group -->
 
 <!-- wp:template-part {"slug":"footer", "area":"footer"} /-->
 
+```
+
+## アーカイブページを作成してみよう
+
+一覧をループで表示させるようなアーカイブページを作成する。  
+クエリループでスタイルなどを適用する場合は設定が必要。
+
+```html
+<!-- wp:template-part {"slug":"header","area":"header"} /-->
+<!-- wp:heading {"level":1} --><h1>お知らせ一覧</h1><!-- /wp:heading -->
+<!-- wp:query {"query":{"postType":"post"}} -->
+  <!-- wp:post-template -->
+    <!-- wp:post-title {"level:1"} /-->
+    <!-- wp:post-date /-->
+    <!-- wp:post-excerpt /-->
+  <!-- /wp:post-template -->
+
+  <!-- wp:query-pagination -->
+    <!-- wp:query-pagination-previous /-->
+    <!-- wp:query-pagination-numbers /-->
+    <!-- wp:query-pagination-next /-->
+  <!-- /wp:query-pagination -->
+<!-- /wp:query -->
+<!-- wp:template-part {"slug":"footer","area":"footer"} /-->
 ```
