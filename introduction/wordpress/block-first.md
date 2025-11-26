@@ -425,12 +425,14 @@ wpコードに一致するHTMLを設置しておくことで、管理画面エ�
 一覧をループで表示させるようなアーカイブページを作成する。  
 クエリループでスタイルなどを適用する場合は設定が必要。
 
+> templates/archive.html
+
 ```html
 <!-- wp:template-part {"slug":"header","area":"header"} /-->
 <!-- wp:heading {"level":1} --><h1>お知らせ一覧</h1><!-- /wp:heading -->
 <!-- wp:query {"query":{"postType":"post"}} -->
   <!-- wp:post-template -->
-    <!-- wp:post-title {"level:1"} /-->
+    <!-- wp:post-title {"level":1} /-->
     <!-- wp:post-date /-->
     <!-- wp:post-excerpt /-->
   <!-- /wp:post-template -->
